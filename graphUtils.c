@@ -28,6 +28,14 @@ void successeurs(graphe_l g, sommet x, ens_de_sommets *e)
   }
 }
 
+void predecesseurs(graphe_l g, sommet x, ens_de_sommets *e)
+{
+  for(int i = 0 ; i < g.n ; i++) {
+    if(arc(g, i, x))
+      addVertex(e, i);
+  }
+}
+
 void addVertex(ens_de_sommets *e, sommet y)
 {
   ens_de_sommets p = malloc(sizeof(Couple));
