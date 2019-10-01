@@ -1,13 +1,15 @@
-#define n_max
+#define n_max 1000
 
 typedef int sommet;
 
-typedef struct chainon {sommet st;
-			struct chainon *suivant;
+typedef struct chainon {
+	sommet st;
+	struct chainon *suivant;
 } Couple;
 
 typedef Couple *liste;
 
-typedef struct { liste a[n_max];
-		 int n;
-} graph_l;
+typedef struct {
+	liste a[n_max];
+	int n;
+} graphe_l;
