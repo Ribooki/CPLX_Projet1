@@ -43,3 +43,8 @@ void addVertex(ens_de_sommets *e, sommet y)
   p->suivant = *e;
   e = &p;
 }
+
+int isDesert(graphe_l g, ens_de_sommets *e)
+{
+  
+}

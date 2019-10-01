@@ -15,8 +15,8 @@ typedef liste ens_de_sommets;
 
 typedef struct {
 	liste a[n_max];
-	int n;
-	int e;
+	int n;	//nombre de sommets
+	int e;	//nombre d'arêtes
 } graphe_l;
 
 /* Renvoie 1 s'il existe un arc entre le sommet x et y, et 0 sinon */
