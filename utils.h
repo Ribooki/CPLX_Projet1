@@ -1,2 +1,3 @@
+#include "graphUtils.h";
 
-void readFile(char* fileAbsolutePath);
+graphe_l* readFile(char* fileAbsolutePath);
