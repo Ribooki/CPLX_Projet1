@@ -4,11 +4,11 @@ int arc(graphe_l g, sommet x, sommet y)
 {
   liste tmp = g.a[x];
 
-  if(g.n <= x || g.n <= y)
-    return 0;
+  // if(g.n <= x || g.n <= y)
+  //   return 0;
 
   while(tmp != NULL) {
-    if(g.a[x]->suivant->st == y)
+    if(tmp->st == y)
       return 1;
     tmp = tmp->suivant;
   }
@@ -47,13 +47,13 @@ void addVertex(ens_de_sommets *e, sommet y)
 int isDesert(graphe_l g, ens_de_sommets *e)
 {
   liste tmp = NULL;
-  if(e == NULL)
-    return 0;
 
   tmp = *e;
-  while(tmp->suivant != NULL)
+  while(tmp->suivant != NULL) {
     if(arc(g, tmp->st, tmp->suivant->st))
       return 0;
+    tmp = tmp->suivant;
+  }
 
   return 1;
 }
