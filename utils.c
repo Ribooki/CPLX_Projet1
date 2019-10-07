@@ -8,7 +8,7 @@ graphe_l* readFile(char* fileAbsolutePath){
     FILE *file = NULL;
     file = fopen(fileAbsolutePath, "r");
     if(file == NULL){
-        printf("Fichier non ouvert");
+        fprintf(stderr, "Fichier non ouvert");
         return;
     }
 
@@ -20,7 +20,7 @@ graphe_l* readFile(char* fileAbsolutePath){
         addVertex(graph->a[x], y);
         printf("x: %i, y: %i", x, graph->a[x]->st);
     }
-    
+
     fclose(file);
     return graph;
 }
