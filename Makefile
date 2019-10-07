@@ -2,7 +2,7 @@ CC = gcc -g
 CFLAGS = -W -Wall -pedantic -ansi -std=c99
 EXEC = main
 FILE =
-SRC = main.c graphUtils.c
+SRC = main.c graphUtils.c utils.c
 OBJ = $(SRC:.c=.o)
 
 all:$(EXEC)
@@ -10,7 +10,7 @@ all:$(EXEC)
 main: $(OBJ)
 	@$(CC) -o $@ $^ $(LDFLAGS)
 
-main.o: graphUtils.h
+main.o: graphUtils.h utils.h
 
 %.o: %.c
 		@$(CC) -o $@ -c $< $(CFLAGS)

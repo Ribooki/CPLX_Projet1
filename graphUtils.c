@@ -46,5 +46,14 @@ void addVertex(ens_de_sommets *e, sommet y)
 
 int isDesert(graphe_l g, ens_de_sommets *e)
 {
-  
+  liste tmp = NULL;
+  if(e == NULL)
+    return 0;
+
+  tmp = *e;
+  while(tmp->suivant != NULL)
+    if(arc(g, tmp->st, tmp->suivant->st))
+      return 0;
+
+  return 1;
 }
