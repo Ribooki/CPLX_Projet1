@@ -41,7 +41,7 @@ void addVertex(ens_de_sommets *e, sommet y)
   ens_de_sommets p = malloc(sizeof(Couple));
   p->st = y;
   p->suivant = *e;
-  e = &p;
+  *e = p;
 }
 
 int isDesert(graphe_l g, ens_de_sommets *e)

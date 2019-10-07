@@ -3,6 +3,7 @@
 graphe_l* readFile(char* fileAbsolutePath)
 {
     graphe_l *graph = malloc(sizeof(graphe_l));
+    int x, y;
     FILE *file = NULL;
     file = fopen(fileAbsolutePath, "r");
     if(file == NULL){
@@ -11,14 +12,17 @@ graphe_l* readFile(char* fileAbsolutePath)
     }
 
     fscanf(file, "%d %d", &graph->n, &graph->e);
-    printf("e: %d, n: %d", graph->e, graph->n);
-    int x;
-    int y;
-    while(fscanf(file, "%d %d", &x, &y)!=EOF){
+    // printf("n: %d, e: %d\n", graph->n, graph->e);
+    while(fscanf(file, "%d %d", &x, &y) == 2){
         addVertex(&graph->a[x], y);
-        printf("x: %d, y: %d", x, graph->a[x]->st);
+        // printf("x: %d, y: %d\n", x, graph->a[x]->st);
     }
 
     fclose(file);
     return graph;
+}
+
+void freeTheG(graphe_l *g)
+{
+
 }
