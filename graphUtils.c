@@ -51,8 +51,9 @@ int isDesert(graphe_l g, ens_de_sommets *e)
 
   tmp = *e;
   while(tmp->suivant != NULL) {
-    printf("%d -> %d\n", tmp->st, tmp->suivant->st);
     if(arc(g, tmp->st, tmp->suivant->st))
+      return 0;
+    if(arc(g, tmp->suivant->st, tmp->st))
       return 0;
     tmp = tmp->suivant;
   }
