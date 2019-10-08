@@ -7,6 +7,7 @@ int arc(graphe_l g, sommet x, sommet y)
   // if(g.n <= x || g.n <= y)
   //   return 0;
 
+  // printf("%d -> %d\n", g.a[x]->suivant->st, y);
   while(tmp != NULL) {
     if(tmp->st == y)
       return 1;
@@ -50,6 +51,7 @@ int isDesert(graphe_l g, ens_de_sommets *e)
 
   tmp = *e;
   while(tmp->suivant != NULL) {
+    printf("%d -> %d\n", tmp->st, tmp->suivant->st);
     if(arc(g, tmp->st, tmp->suivant->st))
       return 0;
     tmp = tmp->suivant;
