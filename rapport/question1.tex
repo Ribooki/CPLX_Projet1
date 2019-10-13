@@ -1,0 +1,87 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{mathptmx}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage[T1]{fontenc}
+%\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{pifont}
+\usepackage{wrapfig}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{amsthm}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathrsfs}
+
+%Packages Figures et graphiques
+\usepackage{graphics} %inclusion de figures
+\usepackage{graphicx} %inclusion de figures
+\usepackage{pstricks,pst-node} %Graphiques
+
+%pour écrire des algo
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage[]{algorithm2e}
+
+\partfont{\centering}
+%\sectionfont{\color{red}{}}
+
+\newcommand{\reels}{\mathbb{R}}
+\newcommand{\naturels}{\mathbb{N}}
+
+\renewcommand{\algorithmicrequire}{\textbf{Entrée:}}
+\renewcommand{\algorithmicensure}{\textbf{Sortie:}}
+\renewcommand{\algorithmicwhile}{\textbf{tant que}}
+\renewcommand{\algorithmicdo}{\textbf{faire}}
+\renewcommand{\algorithmicendwhile}{\textbf{fin tant que}}
+\renewcommand{\algorithmicif}{\textbf{si}}
+\renewcommand{\algorithmicendif}{\textbf{fin si}}
+\renewcommand{\algorithmicthen}{\textbf{alors}}
+\renewcommand{\algorithmicreturn}{\textbf{retourner}}
+
+\begin{document}
+ 
+\part*{Pseudo-code de la question 1}
+ 
+\begin{algorithm*}
+    \caption{arc}
+    \begin{algorithmic}
+        \REQUIRE graphe g, sommet x, sommet y
+        \ENSURE 1 s'il existe un arc de x à y, et 0 sinon
+        
+        \WHILE{on n'a pas fini d'explorer tous les arcs de x}
+            \IF{il existe un arc de x à y}
+                \RETURN 1
+            \ENDIF
+        \ENDWHILE
+        \RETURN 0
+    \end{algorithmic}
+\end{algorithm*}
+ 
+\begin{algorithm*}
+    \caption{isDesert}
+    \begin{algorithmic}
+        \REQUIRE graphe g, ens\_de\_sommets e
+        \ENSURE 1 si le graphe est désert, et 0 sinon
+        
+        \WHILE{on n'a pas fini d'explorer tous les sommets de e}
+            \IF{arc(g, sommet actuel, sommet suivant)}
+                \RETURN 0
+            \ENDIF
+            
+            \IF{arc(g, sommet suivant, sommet actuel)}
+                \RETURN 0
+            \ENDIF
+        \ENDWHILE
+        
+        \RETURN 1
+    \end{algorithmic}
+\end{algorithm*}
+
+ 
+\end{document}
