@@ -29,5 +29,8 @@ void successeurs(graphe_l g, sommet x, ens_de_sommets *e);
 /* Ajoute le sommet y dans l'ens_de_sommets e */
 void addVertex(ens_de_sommets *e, sommet y);
 
-/* Renvoie 1 si le graphe en paramètre est désert, et 0 sinon */
-int isDesert(graphe_l g, ens_de_sommets *e);
+/* Supprime le premier sommet de l'ensemble */
+void removeFirst(ens_de_sommets *e);
+
+/* Retourne 1 si e contient le sommet y, et 0 sinon */
+int contains(ens_de_sommets *e, sommet y);

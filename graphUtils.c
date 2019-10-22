@@ -45,3 +45,21 @@ void addVertex(ens_de_sommets *e, sommet y)
   p->suivant = *e;
   *e = p;
 }
+
+void removeFirst(ens_de_sommets *e)
+{
+    liste tmp = *e;
+    tmp = (*e)->suivant;
+    *e = tmp;
+}
+
+int contains(ens_de_sommets *e, sommet y)
+{
+    liste tmp = *e;
+    while(tmp != NULL) {
+        if(tmp->st == y)
+            return 1;
+        tmp = tmp->suivant;
+    }
+    return 0;
+}
