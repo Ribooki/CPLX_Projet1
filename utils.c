@@ -19,6 +19,7 @@ graphe_l* readFile(char* fileAbsolutePath)
       graph->a[s] = NULL;
     while(fscanf(file, "%d %d", &x, &y) == 2){
         addVertex(&(graph->a[x]), y);
+        addVertex(&(graph->a[y]), x);
         // printf("x: %d, y: %d\n", x, graph->a[x]->st);
     }
 
