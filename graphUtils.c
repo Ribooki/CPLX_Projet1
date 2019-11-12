@@ -41,7 +41,6 @@ void addVertex(ens_de_sommets *e, sommet y)
 {
   ens_de_sommets p = malloc(sizeof(Couple));
   p->st = y;
-  // printf(e == NULL ? "NULL\n" : "NOT NULL\n");
   p->suivant = *e;
   *e = p;
 }
@@ -69,11 +68,11 @@ void display_graphe(graphe_l g){
 		printf("%d : ", i);
 		liste tmp = g.a[i];
 		if(tmp != NULL)
-			printf("%d", tmp.st);
-		tmp=tmp.suivant;
+			printf("%d", tmp->st);
+		tmp=tmp->suivant;
 		while(tmp != NULL){
-			printf(", %d", tmp.st);
-			tmp=tmp.suivant;
+			printf(", %d", tmp->st);
+			tmp=tmp->suivant;
 		}
 	}
 }
