@@ -26,6 +26,9 @@ int arc(graphe_l g, sommet x, sommet y);
 /* Ajoute les successeurs du sommet x dans ens_de_sommets e */
 void successeurs(graphe_l g, sommet x, ens_de_sommets *e);
 
+/* Ajoute les prédécesseurs du sommet x dans ens_de_sommets e */
+void predecesseurs(graphe_l g, sommet x, ens_de_sommets *e);
+
 /* Ajoute le sommet y dans l'ens_de_sommets e */
 void addVertex(ens_de_sommets *e, sommet y);
 
