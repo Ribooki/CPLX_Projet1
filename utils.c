@@ -13,14 +13,12 @@ graphe_l* readFile(char* fileAbsolutePath)
     }
 
     fscanf(file, "%d %d", &graph->n, &graph->e);
-    // printf("n: %d, e: %d\n", graph->n, graph->e);
 
     for(int s = 0 ; s < graph->n ; s++)
       graph->a[s] = NULL;
     while(fscanf(file, "%d %d", &x, &y) == 2){
         addVertex(&(graph->a[x]), y);
         addVertex(&(graph->a[y]), x);
-        // printf("x: %d, y: %d\n", x, graph->a[x]->st);
     }
 
     fclose(file);
