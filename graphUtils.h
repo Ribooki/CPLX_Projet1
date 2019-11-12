@@ -34,3 +34,6 @@ void removeFirst(ens_de_sommets *e);
 
 /* Retourne 1 si e contient le sommet y, et 0 sinon */
 int contains(ens_de_sommets *e, sommet y);
+
+/* Affiche le graphe */
+void display_graphe(graphe_l g);
