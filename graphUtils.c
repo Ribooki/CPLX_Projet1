@@ -22,7 +22,6 @@ void successeurs(graphe_l g, sommet x, ens_de_sommets *e)
 {
   liste l;
   l = g.a[x];
-  e = NULL;
 
   while(l != NULL) {
     addVertex(e, l->st);
@@ -42,6 +41,7 @@ void addVertex(ens_de_sommets *e, sommet y)
 {
   ens_de_sommets p = malloc(sizeof(Couple));
   p->st = y;
+  // printf(e == NULL ? "NULL\n" : "NOT NULL\n");
   p->suivant = *e;
   *e = p;
 }
@@ -89,4 +89,5 @@ void display_ens_de_sommets(ens_de_sommets e){
 		printf(", %d", tmp->st);
 		tmp=tmp->suivant;
 	}
+    printf("\n");
 }

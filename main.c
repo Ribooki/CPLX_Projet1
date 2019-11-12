@@ -6,15 +6,17 @@ int main()
   // graphe_l *g = readFile("test.txt");
 
   ens_de_sommets head = NULL;
-  addVertex(&head, 0);
-  addVertex(&head, 1);
-  addVertex(&head, 2);
 
-  display_graphe(*g);
-  // calcul_graphe_maximal(g, 0);
+  head = calcul_graphe_maximal(*g, 0);
+  printf("maximal ? %s\n",isMaximal(*g, &head) ? "Oui" : "Non");
+  display_ens_de_sommets(head);
+  deleteList(&head);
 
-  free(head->suivant);
-  free(head);
+  // head = calcul_graphe_maximal(*g, 1);
+  // printf("maximal ? %s\n",isMaximal(*g, &head) ? "Oui" : "Non");
+  // display_ens_de_sommets(head);
+  //
+  // deleteList(&head);
   freeTheG(g);
   return 0;
 }
