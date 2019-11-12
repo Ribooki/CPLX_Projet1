@@ -78,3 +78,15 @@ void display_graphe(graphe_l g){
         printf("\n");
 	}
 }
+
+void display_ens_de_sommets(ens_de_sommets e){
+	liste tmp = e;
+	if(tmp != NULL){
+		printf("%d", tmp->st);
+		tmp=tmp->suivant;
+	}
+	while(tmp != NULL){
+		printf(", %d", tmp->st);
+		tmp=tmp->suivant;
+	}
+}

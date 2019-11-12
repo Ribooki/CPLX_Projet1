@@ -40,3 +40,6 @@ int contains(ens_de_sommets *e, sommet y);
 
 /* Affiche le graphe */
 void display_graphe(graphe_l g);
+
+/* Affiche un ensemble de sommets */
+void display_ens_de_sommets(ens_de_sommets e);
