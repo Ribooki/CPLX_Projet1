@@ -8,7 +8,7 @@ ens_de_sommets calcul_graphe_maximal(graphe_l g, sommet x)
     successeurs(g, x, &checkVertex);
 
     /* Pour chaque sommet, s'il ne se trouve pas parmi les successeurs des
-    ** sommets, on l'ajoute dans le sous-graphe, et on met à jour la liste de  
+    ** sommets, on l'ajoute dans le sous-graphe, et on met à jour la liste de
     ** tous les successeurs */
     for(int i = 0 ; i < g.n ; i++) {
         if(!contains(&checkVertex, i) && i != x) {

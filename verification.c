@@ -39,7 +39,6 @@ int isMaximal(graphe_l g, ens_de_sommets *e)
             addVertex(e, i);
             if(!isDesert(tmp, e))   //si pas désert on continue
                 removeFirst(e);
-
             else {                  //sinon e n'est pas maximal
                 removeFirst(e);
                 return 0;
