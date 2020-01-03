@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef int sommet;
+typedef int edge;
 
 typedef struct {
     struct Clause *clauses;
@@ -10,13 +10,20 @@ typedef struct {
 
 typedef struct {
     struct Vertex *vertices;
+    int verticesCount;
 } Clause;
 
 typedef struct{
-    int sommet *sommets;
+    edge edge;
     int isNegative;
 } Vertex;
 
-void addClauseInSat();
+Sat createSat();
 
-void addVertexInClause();
+Clause createClause();
+
+Vertex createVertex();
+
+int addClauseInSat();//retourne 1 si réussis, 0 sinon
+
+int addVertexInClause();//retourne 1 si réussis, 0 sinon
