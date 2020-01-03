@@ -47,7 +47,7 @@ void displaySat(Sat s){
     int i = 0;
     int y = 0;
     for(i=0; i<s.clausesCount; i++){
-        for(y=0; y<3; i++){
+        for(y=0; y<3; y++){
             printf(", %d", s.clauses[i].vertices[y].edge); //TODO: petit débat
         }
         printf("\n");
