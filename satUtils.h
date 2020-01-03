@@ -2,22 +2,21 @@
 
 typedef int edge;
 
-typedef struct {
-    struct Clause* clauses;
-    int clausesCount;
-    int differentsVerticesCount;
-} Sat;
-
 typedef struct{
     edge edge;
     int isNegative;
 } Vertex;
 
 typedef struct {
-    struct Vertex *vertices;
+    Vertex* vertices;
     int verticesCount;
 } Clause;
 
+typedef struct {
+    Clause* clauses;
+    int clausesCount;
+    int differentsVerticesCount;
+} Sat;
 
 Sat* createSat();
 
