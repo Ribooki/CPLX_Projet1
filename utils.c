@@ -8,7 +8,7 @@ graphe_l* readFile(char* fileAbsolutePath)
     file = fopen(fileAbsolutePath, "r");
 
     if(file == NULL){
-        fprintf(stderr, "Fichier non ouvert");
+        fprintf(stderr, "Fichier non ouvert\n");
         exit(EXIT_FAILURE);
     }
 

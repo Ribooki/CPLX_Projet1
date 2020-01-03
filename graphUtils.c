@@ -67,13 +67,17 @@ void display_graphe(graphe_l g){
 	for(int i=0 ; i<g.n ; i++){
 		printf("%d : ", i);
 		liste tmp = g.a[i];
+
 		if(tmp != NULL)
 			printf("%d", tmp->st);
+
 		tmp=tmp->suivant;
+
 		while(tmp != NULL){
 			printf(", %d", tmp->st);
 			tmp=tmp->suivant;
 		}
+        printf("\n");
 	}
 }
 

@@ -1,29 +1,29 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "maximum.h"
 
 typedef int edge;
 
 typedef struct {
-    struct Clause *clauses;
+    struct Clause* clauses;
     int clausesCount;
     int differentsVerticesCount;
 } Sat;
-
-typedef struct {
-    struct Vertex *vertices;
-    int verticesCount;
-} Clause;
 
 typedef struct{
     edge edge;
     int isNegative;
 } Vertex;
 
-Sat createSat();
+typedef struct {
+    struct Vertex *vertices;
+    int verticesCount;
+} Clause;
 
-Clause createClause();
 
-Vertex createVertex(int isNeg, edge edg);
+Sat* createSat();
+
+Clause* createClause();
+
+Vertex* createVertex(int isNeg, edge edg);
 
 int addClauseInSat(Sat *s, Clause *c);//retourne 1 si réussis, 0 sinon
 

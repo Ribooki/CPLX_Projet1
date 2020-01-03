@@ -1,29 +1,30 @@
 #include "satUtils.h"
 
-Sat createSat(){
-    Sat s = malloc(sizeof(Sat));
-    s.clausesCount = 0;
-    s.differentsVerticesCount = 0;
-    s.clauses = malloc(s.clauses, 0);
+Sat* createSat(){
+    Sat *s = malloc(sizeof(Sat));
+    s->clausesCount = 0;
+    s->differentsVerticesCount = 0;
+    s->clauses = malloc(sizeof(Clause));
     return s;
 }
 
-Clause createClause(){
-    Clause c = malloc(sizeof(Clause));
-    c.verticesCount = 0;
-    s.vertices = malloc(s.vertices, 0);
+Clause* createClause(){
+    Clause *c = malloc(sizeof(Clause));
+    c->verticesCount = 0;
+    c->vertices = malloc(sizeof(Vertex));
     return c;
 }
 
-Vertex createVertex(int isNeg, edge edg){
+Vertex* createVertex(int isNeg, edge edg){
     if(isNeg > 1 || isNeg < 0) return NULL;
-    Vertex v = malloc(sizeof(Vertex));
-    v.isNegative = isNeg;
-    v.edge = edg;
+    Vertex *v = malloc(sizeof(Vertex));
+    v->isNegative = isNeg;
+    v->edge = edg;
+    return v;
 }
 
 int addClauseInSat(Sat *s, Clause *c){
-    if(c == NULL || s = NULL || c->verticesCount > 3) return 0; //Pour 3 sat + verif de bases
+    if(c == NULL || s == NULL || c->verticesCount > 3) return 0; //Pour 3 sat + verif de bases
     s->clausesCount = s->clausesCount + 1;
     s->clauses = realloc(s->clauses, sizeof(Clause) * s->clausesCount);
     s->clauses[s->clausesCount-1] = c;
@@ -38,7 +39,7 @@ int addVertexInClause(Sat *s, Clause *c, Vertex *v){
     c->vertices[c.verticesCount-1] = v;
     if(s->differentsVerticesCount < v->edge){
         s->differentsVerticesCount = v->edge;
-    } 
+    }
     return 1;
 }
 
