@@ -16,3 +16,7 @@ typedef struct{
     int sommet *sommets;
     int isNegative;
 } Vertex;
+
+void addClauseInSat();
+
+void addVertexInClause();
