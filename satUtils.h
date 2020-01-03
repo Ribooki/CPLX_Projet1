@@ -6,6 +6,7 @@ typedef int edge;
 typedef struct {
     struct Clause *clauses;
     int clausesCount;
+    int differentsVerticesCount;
 } Sat;
 
 typedef struct {
@@ -22,8 +23,8 @@ Sat createSat();
 
 Clause createClause();
 
-Vertex createVertex();
+Vertex createVertex(int isNeg, edge edg);
 
-int addClauseInSat();//retourne 1 si réussis, 0 sinon
+int addClauseInSat(Sat *s, Clause *c);//retourne 1 si réussis, 0 sinon
 
-int addVertexInClause();//retourne 1 si réussis, 0 sinon
+int addVertexInClause(Sat *s, Clause *c, Vertex *v);//retourne 1 si réussis, 0 sinon

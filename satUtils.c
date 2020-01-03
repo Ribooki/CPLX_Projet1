@@ -3,14 +3,15 @@
 Sat createSat(){
     Sat s = malloc(sizeof(Sat));
     s.clausesCount = 0;
-    s->clauses = malloc(s->clauses, 0);
+    s.differentsVerticesCount = 0;
+    s.clauses = malloc(s.clauses, 0);
     return s;
 }
 
 Clause createClause(){
     Clause c = malloc(sizeof(Clause));
     c.verticesCount = 0;
-    s->vertices = malloc(s->vertices, 0);
+    s.vertices = malloc(s.vertices, 0);
     return c;
 }
 
@@ -21,20 +22,33 @@ Vertex createVertex(int isNeg, edge edg){
     v.edge = edg;
 }
 
-int addClauseInSat(Sat s, Clause c){
-    if(c == NULL || s = NULL) return 0;
-    s.clausesCount = s.clausesCount + 1;
-    s->clauses = realloc(s->clauses, sizeof(Clause) * s.clausesCount);
-    s->clauses[s.clausesCount-1] = c;
+int addClauseInSat(Sat *s, Clause *c){
+    if(c == NULL || s = NULL || c->verticesCount > 3) return 0; //Pour 3 sat + verif de bases
+    s->clausesCount = s->clausesCount + 1;
+    s->clauses = realloc(s->clauses, sizeof(Clause) * s->clausesCount);
+    s->clauses[s->clausesCount-1] = c;
     return 1;
 }
 
-void addVertexInClause(Clause c, Vertex v){
+int addVertexInClause(Sat *s, Clause *c, Vertex *v){
     if(c == NULL || v = NULL) return 0;
-    c.verticesCount +1;
-    c->vertices = realloc(c->vertices, sizeof(Vertex) * c.verticesCount);
-    if(c.verticesCount > 3) return 0;
+    c->verticesCount +1;
+    if(c->verticesCount > 3) return 0; //Pour 3 sats
+    c->vertices = realloc(c->vertices, sizeof(Vertex) * c->verticesCount);
     c->vertices[c.verticesCount-1] = v;
+    if(s->differentsVerticesCount < v->edge){
+        s->differentsVerticesCount = v->edge;
+    } 
     return 1;
 }
 
+void displaySat(Sat s){
+    int i = 0;
+    int y = 0;
+    for(i=0; i<s.clausesCount; i++){
+        for(y=0; y<3; i++){
+            printf(", %d", s.clauses[i].vertices[y]); //TODO: petit débat
+        }
+        printf("\n");
+    }
+}
