@@ -4,15 +4,15 @@
 typedef int sommet;
 
 typedef struct {
-    struct clause *clauses;
+    struct Clause *clauses;
     int clausesCount;
-} sat;
+} Sat;
 
 typedef struct {
-    struct vertex *vertices;
-} clause;
+    struct Vertex *vertices;
+} Clause;
 
 typedef struct{
     int sommet *sommets;
     int isNegative;
-} vertex;
+} Vertex;
