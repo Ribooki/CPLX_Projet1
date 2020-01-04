@@ -48,7 +48,7 @@ int addVertexInClause(Sat *s, Clause *c, Vertex *v){
     c->vertices = realloc(c->vertices, sizeof(Vertex) * c->verticesCount);
     c->vertices[c->verticesCount-1] = *v;
     if(s->differentsVerticesCount < v->edge){
-        s->differentsVerticesCount = v->edge;
+        s->differentsVerticesCount = v->edge+1;
     }
     return 1;
 }
