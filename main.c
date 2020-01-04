@@ -1,3 +1,4 @@
+/*
 #include "maximum.h"
 
 int main()
@@ -11,4 +12,14 @@ int main()
 
   freeTheG(g);
   return 0;
+}*/
+#include "desertToSAT.h"
+
+int main(){
+    graphe_l *g = readFile("test.txt");
+    display_graphe(*g);
+    Sat* sat = toSAT(*g);
+    displaySat(sat);
+
+    return 0;
 }

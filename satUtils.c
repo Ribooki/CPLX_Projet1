@@ -24,7 +24,17 @@ Vertex* createVertex(int isNeg, edge edg){
 }
 
 int addClauseInSat(Sat *s, Clause *c){
-    if(c == NULL || s == NULL || c->verticesCount > 3) return 0; //Pour 3 sat + verif de bases
+    if(c == NULL || s == NULL) return 0;
+    // Passage en 3-SAT ?
+    /*
+    if(c->verticesCount > 3){
+        Clause *c1 = createClause();
+        addVertexInClause()
+        Clause *c2 = createClause();
+        for(int i=0 ; i< ; i++){
+            
+        }
+    }*/
     s->clausesCount = s->clausesCount + 1;
     s->clauses = realloc(s->clauses, sizeof(Clause) * s->clausesCount);
     s->clauses[s->clausesCount-1] = *c;
@@ -58,9 +68,9 @@ void displaySat(Sat *s){
     printf("clausesCount : %d\n", s->clausesCount);
     printf("nbVertex : %d\n", s->differentsVerticesCount);
     for(int i=0; i<s->clausesCount; i++){
-            displayVertex(&s->clauses[i].vertices[0], 1);
-        for(int y=1; y<3; y++){
-            displayVertex(&s->clauses[i].vertices[0], 0);
+        displayVertex(&s->clauses[i].vertices[0], 1);
+        for(int y=1; y<s->clauses[i].verticesCount; y++){
+            displayVertex(&s->clauses[i].vertices[y], 0);
         }
         printf("\n");
     }
