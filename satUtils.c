@@ -34,7 +34,7 @@ int addClauseInSat(Sat *s, Clause *c){
 int addVertexInClause(Sat *s, Clause *c, Vertex *v){
     if(c == NULL || v == NULL) return 0;
     c->verticesCount += 1;
-    if(c->verticesCount > 3) return 0; //Pour 3 sats
+    //if(c->verticesCount > 3) return 0; //Pour 3 sats
     c->vertices = realloc(c->vertices, sizeof(Vertex) * c->verticesCount);
     c->vertices[c->verticesCount-1] = *v;
     if(s->differentsVerticesCount < v->edge){
@@ -43,12 +43,24 @@ int addVertexInClause(Sat *s, Clause *c, Vertex *v){
     return 1;
 }
 
-void displaySat(Sat s){
-    int i = 0;
-    int y = 0;
-    for(i=0; i<s.clausesCount; i++){
-        for(y=0; y<3; y++){
-            printf(", %d", s.clauses[i].vertices[y].edge); //TODO: petit débat
+void displayVertex(Vertex *v, int isFirst){
+    if(isFirst == 0)
+        printf(" v ");
+    if(v->isNegative == 0){
+        printf("%d", v->edge);
+    }
+    else{
+        printf("-%d", v->edge);
+    }
+}
+
+void displaySat(Sat *s){
+    printf("clausesCount : %d\n", s->clausesCount);
+    printf("nbVertex : %d\n", s->differentsVerticesCount);
+    for(int i=0; i<s->clausesCount; i++){
+            displayVertex(&s->clauses[i].vertices[0], 1);
+        for(int y=1; y<3; y++){
+            displayVertex(&s->clauses[i].vertices[0], 0);
         }
         printf("\n");
     }
