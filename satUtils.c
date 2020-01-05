@@ -97,6 +97,14 @@ void satToFile(Sat* s, char* path){
 }
 
 void miniSolve(char* cnf, char* out){
-    execlp("minisat", "minisat", cnf, out, NULL);
+    pid_t pid;
+    pid = fork();
+    if (pid == 0){
+        execlp("minisat", "minisat", cnf, out, NULL);
+    }
+    else{
+        wait(0);
+    }
+
     printf("%s résolu et solution écrite dans %s\n", cnf, out);
 }
