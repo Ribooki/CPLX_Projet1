@@ -14,7 +14,6 @@ int main()
   return 0;
 }*/
 //#include "desertToSAT.h"
-#include "desertToSAT.h"
 #include "SATToDesert.h"
 
 int main(){
