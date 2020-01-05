@@ -14,9 +14,8 @@ int main()
   return 0;
 }*/
 //#include "desertToSAT.h"
-#include "utils.h"
+#include "desertToSAT.h"
 #include "SATToDesert.h"
-
 
 int main(){
 
@@ -29,6 +28,8 @@ int main(){
     displaySat(sat);
 
     satToFile(sat, "testPrintSat.cnf");
+
+    miniSolve("testPrintSat.cnf", "testOut.txt");
 
     return 0;
 }

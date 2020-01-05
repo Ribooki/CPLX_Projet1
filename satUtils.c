@@ -19,7 +19,7 @@ Vertex* createVertex(int isNeg, edge edg){
     if(isNeg > 1 || isNeg < 0) return NULL;
     Vertex *v = malloc(sizeof(Vertex));
     v->isNegative = isNeg;
-    v->edge = edg;
+    v->edg = edg;
     return v;
 }
 
@@ -47,8 +47,8 @@ int addVertexInClause(Sat *s, Clause *c, Vertex *v){
     //if(c->verticesCount > 3) return 0; //Pour 3 sats
     c->vertices = realloc(c->vertices, sizeof(Vertex) * c->verticesCount);
     c->vertices[c->verticesCount-1] = *v;
-    if(s->differentsVerticesCount < v->edge){
-        s->differentsVerticesCount = v->edge;
+    if(s->differentsVerticesCount < v->edg){
+        s->differentsVerticesCount = v->edg;
     }
     return 1;
 }
@@ -57,10 +57,10 @@ void displayVertex(Vertex *v, int isFirst){
     if(isFirst == 0)
         printf(" v ");
     if(v->isNegative == 0){
-        printf("%d", v->edge);
+        printf("%d", v->edg);
     }
     else{
-        printf("-%d", v->edge);
+        printf("-%d", v->edg);
     }
 }
 
@@ -84,9 +84,9 @@ void satToFile(Sat* s, char* path){
    for(int i=0 ; i<s->clausesCount ; i++){
        for(int j=0 ; j<s->clauses[i].verticesCount ; j++){
            if(s->clauses[i].vertices[j].isNegative == 1)
-               fprintf(file, "-%d ", s->clauses[i].vertices[j].edge);
+               fprintf(file, "-%d ", s->clauses[i].vertices[j].edg);
            else
-               fprintf(file, "%d ", s->clauses[i].vertices[j].edge);
+               fprintf(file, "%d ", s->clauses[i].vertices[j].edg);
        }
        fprintf(file, "0\n");
    }
@@ -94,4 +94,9 @@ void satToFile(Sat* s, char* path){
    fclose(file);
 
    printf("SAT printed in %s\n", path);
+}
+
+void miniSolve(char* cnf, char* out){
+    execlp("minisat", "minisat", cnf, out, NULL);
+    printf("%s résolu et solution écrite dans %s\n", cnf, out);
 }
