@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 typedef int edge;
 
 typedef struct{
-    edge edge;
+    edge edg;
     int isNegative;
 } Vertex;
 
@@ -36,3 +37,5 @@ void displaySat(Sat* s);
 void satToFile(Sat* s, char* path);
  
 void execSat(char* path);
+
+void miniSolve(char* cnf, char* out);
