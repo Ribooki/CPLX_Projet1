@@ -4,6 +4,7 @@ EXEC = main
 FILE =
 SRC = main.c graphUtils.c utils.c verification.c maximal.c maximum.c satUtils.c desertToSAT.c SATToDesert.c
 OBJ = $(SRC:.c=.o)
+SUPPR = *.o tmpOUT.txt
 
 all:$(EXEC)
 
@@ -27,7 +28,7 @@ valgrind:
 	valgrind -v --track-origins=yes ./$(EXEC) $(FILE)
 
 clean:
-	@rm -rf *.o
+	@rm -rf $(SUPPR)
 
 mrproper: clean
 	@rm -rf $(EXEC)
