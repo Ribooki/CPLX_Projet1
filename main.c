@@ -14,11 +14,15 @@ int main()
   return 0;
 }*/
 #include "desertToSAT.h"
+#include "utils.h"
 
 int main(){
     graphe_l *g = readFile("test.txt");
     display_graphe(*g);
     Sat* sat = toSAT(*g);
+   /*
+    Sat *c = readSatFile("SAT/dubois20.cnf");
+    */
     displaySat(sat);
 
     return 0;
