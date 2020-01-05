@@ -20,15 +20,7 @@ int main(){
 
     graphe_l *g = readFile("test.txt");
     display_graphe(*g);
-    Sat* sat = toSAT(*g);
-
-    //Sat *sat = readSatFile("SAT/dubois20.cnf");
-
-    displaySat(sat);
-
-    satToFile(sat, "testPrintSat.cnf");
-
-    miniSolve("testPrintSat.cnf", "testOut.txt");
+    solveGrapheInSAT(*g, 3);    
 
     return 0;
 }
