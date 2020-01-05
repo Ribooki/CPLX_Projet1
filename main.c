@@ -21,5 +21,7 @@ int main(){
     Sat* sat = toSAT(*g);
     displaySat(sat);
 
+    satToFile(sat, "testPrintSat.cnf");
+
     return 0;
 }

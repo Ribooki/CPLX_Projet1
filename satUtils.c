@@ -48,7 +48,7 @@ int addVertexInClause(Sat *s, Clause *c, Vertex *v){
     c->vertices = realloc(c->vertices, sizeof(Vertex) * c->verticesCount);
     c->vertices[c->verticesCount-1] = *v;
     if(s->differentsVerticesCount < v->edge){
-        s->differentsVerticesCount = v->edge+1;
+        s->differentsVerticesCount = v->edge;
     }
     return 1;
 }
@@ -64,7 +64,7 @@ void displayVertex(Vertex *v, int isFirst){
     }
 }
 
-void displaySat(Sat *s){
+void displaySat(Sat* s){
     printf("clausesCount : %d\n", s->clausesCount);
     printf("nbVertex : %d\n", s->differentsVerticesCount);
     for(int i=0; i<s->clausesCount; i++){
@@ -74,4 +74,24 @@ void displaySat(Sat *s){
         }
         printf("\n");
     }
+}
+
+void satToFile(Sat* s, char* path){
+   FILE *file = fopen(path, "w+");
+
+   fprintf(file, "p cnf %d %d\n", s->differentsVerticesCount, s->clausesCount);
+
+   for(int i=0 ; i<s->clausesCount ; i++){
+       for(int j=0 ; j<s->clauses[i].verticesCount ; j++){
+           if(s->clauses[i].vertices[j].isNegative == 1)
+               fprintf(file, "-%d ", s->clauses[i].vertices[j].edge);
+           else
+               fprintf(file, "%d ", s->clauses[i].vertices[j].edge);
+       }
+       fprintf(file, "0\n");
+   }
+
+   fclose(file);
+
+   printf("SAT printed in %s\n", path);
 }

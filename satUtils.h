@@ -30,4 +30,8 @@ int addVertexInClause(Sat *s, Clause *c, Vertex *v);//retourne 1 si réussis, 0 
 
 void displayVertex(Vertex *v, int isFirst);
 
-void displaySat(Sat *s);
+void displaySat(Sat* s);
+
+void satToFile(Sat* s, char* path);
+ 
+void execSat(char* path);
