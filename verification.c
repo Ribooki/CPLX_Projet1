@@ -6,10 +6,11 @@ int isDesert(graphe_l g, ens_de_sommets *e)
   sommet s = 0;
   tmp = *e;
 
+  /* Pour chaque sommet */
   while(tmp != NULL) {
       s = tmp->st;
 
-      /* On check tous les arcs du sommet */
+      /* On vérifie tous les arcs du sommet */
       tmp2 = tmp;
       while(tmp2 != NULL) {
           /* S'il y a un arc, le graphe n'est pas désert */
