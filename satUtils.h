@@ -1,4 +1,5 @@
-#include "maximum.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef int edge;
 

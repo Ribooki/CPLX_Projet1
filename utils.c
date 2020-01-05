@@ -27,8 +27,6 @@ graphe_l* readFile(char* fileAbsolutePath)
 
 Sat* readSatFile(char* fileAbsolutePath)
 {
-  Sat * graph = malloc(sizeof(Sat));
-  int x = 0, y = 0;
   FILE *file = NULL;
   file = fopen(fileAbsolutePath, "r");
 
@@ -42,10 +40,11 @@ Sat* readSatFile(char* fileAbsolutePath)
   int vTemp;
   while(fscanf(file, "p cnf %d %d", &n, &p) != 2); //passe les commentaires et arrive a la premiere ligne
   Clause *c = createClause();
-  Vertex v = NULL;
-  while(fscanf(file, "%d", vTemp) == 1){
+  Vertex *v = NULL;
+  while(fscanf(file, "%d", &vTemp) == 1){
+    printf("test");
     if(vTemp == 0){
-      addClauseInSat(&s, &c);
+      addClauseInSat(s, c);
       c = createClause();
     }else{
       if(vTemp < 0){
@@ -54,10 +53,10 @@ Sat* readSatFile(char* fileAbsolutePath)
         createVertex(0, vTemp);
       }
     }
-    addVertexInClause(&c, v);
+    addVertexInClause(s, c, v);
   }
   fclose(file);
-  return graph;
+  return s;
 }
 
 void freeTheG(graphe_l *g)
