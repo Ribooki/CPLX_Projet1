@@ -32,17 +32,19 @@ int addClauseInSat(Sat *s, Clause *c){
         addVertexInClause()
         Clause *c2 = createClause();
         for(int i=0 ; i< ; i++){
-            
+
         }
     }*/
     s->clausesCount = s->clausesCount + 1;
     s->clauses = realloc(s->clauses, sizeof(Clause) * s->clausesCount);
     s->clauses[s->clausesCount-1] = *c;
+    deleteClause(c);
     return 1;
 }
 
 int addVertexInClause(Sat *s, Clause *c, Vertex *v){
     if(c == NULL || v == NULL) return 0;
+
     c->verticesCount += 1;
     //if(c->verticesCount > 3) return 0; //Pour 3 sats
     c->vertices = realloc(c->vertices, sizeof(Vertex) * c->verticesCount);
@@ -50,6 +52,7 @@ int addVertexInClause(Sat *s, Clause *c, Vertex *v){
     if(s->differentsVerticesCount < v->edg){
         s->differentsVerticesCount = v->edg;
     }
+    deleteVertex(v);
     return 1;
 }
 
@@ -107,4 +110,21 @@ void miniSolve(char* cnf, char* out){
     }
 
     printf("%s résolu et solution écrite dans %s\n", cnf, out);
+}
+
+void deleteVertex(Vertex *v)
+{
+    free(v);
+}
+
+void deleteClause(Clause *c)
+{
+    deleteVertex(c->vertices);
+    free(c);
+}
+
+void deleteSat(Sat *s)
+{
+    deleteClause(s->clauses);
+    free(s);
 }
