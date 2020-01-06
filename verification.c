@@ -1,10 +1,13 @@
 #include "verification.h"
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité:
+ * spec: Vérifie que le graph donné en entrée est désert ou non.
+ * Avec g le graph et e l'ensemble de sommets représentant le sous-ensemble désert.
+ * Pour chaque sommet dans l'ensemble, on vérifie si un autre sommet de cet ensemble est reliable par une arête.
+ * Retourne 1 si vraie , 0 sinon.
+ * auteur: Alexandre Tosi
+ * verificateur: Thomas Rieffel
+ * complexité: O(nlog(n)m)
  */
 int isDesert(graphe_l g, ens_de_sommets *e)
 {
@@ -34,10 +37,13 @@ int isDesert(graphe_l g, ens_de_sommets *e)
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: Vérifie que le graph donné en entrée est un désert maximal ou non.
+ * Avec g le graph et e l'ensemble de sommets représentant le sous-ensemble désert.
+ * Si le graph est desert on vérifie pour chaque sommet dans le graph si en l'ajoutant le graph reste desert ou non.
+ * Si oui, alors on retourne 0, 1 sinon.
+ * auteur: Thomas Rieffel
+ * verificateur: Romain Allemand
+ * complexité: O(n^2log(n)m)
  */
 int isMaximal(graphe_l g, ens_de_sommets *e)
 {
