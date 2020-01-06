@@ -31,7 +31,7 @@ int arc(graphe_l g, sommet x, sommet y)
  * spec: Ajoute à l'ensemble de sommet donné les successeurs du sommet donné.
  * Avec g le graph, x le sommet et e l'ensemble de sommets
  * On parcourt les voisins du sommets et on les ajoutes 1 à 1 à l'ensemble.
- * auteur: ??
+ * auteur: Alexandre Tosi
  * verificateur: Thomas Rieffel
  * complexité: O(m)
  */
@@ -50,9 +50,9 @@ void successeurs(graphe_l g, sommet x, ens_de_sommets *e)
  * spec: Ajoute à l'ensemble de sommet donné les predecesseurs du sommet donné.
  * Avec g le graph, x le sommet et e l'ensemble de sommets
  * On parcourt les voisins du sommets et on les ajoutes 1 à 1 à l'ensemble.
- * auteur: ??
+ * auteur: Alexandre Tosi
  * verificateur: Thomas Rieffel
- * complexité: O(m)
+ * complexité: O(n.d^+(x))
  */
 void predecesseurs(graphe_l g, sommet x, ens_de_sommets *e)
 {
@@ -65,7 +65,7 @@ void predecesseurs(graphe_l g, sommet x, ens_de_sommets *e)
 /**
  * spec: Ajoute un sommet donné à l'ensemble de sommets donné.
  * Avec e l'ensemble de sommets et y le sommet.
- * auteur: ??
+ * auteur: Alexandre Tosi
  * verificateur: Thomas Rieffel
  * complexité: O(1)
  */
@@ -80,7 +80,7 @@ void addVertex(ens_de_sommets *e, sommet y)
 /**
  * spec: Supprime le premier sommet de l'ensemble donné (Le 2 eme devient le 1er...)
  * Avec e l'ensemble de sommets.
- * auteur: ??
+ * auteur: Alexandre Tosi
  * verificateur: Thomas Rieffel
  * complexité: O(1)
  */
@@ -142,7 +142,7 @@ void display_graphe(graphe_l g){
  * Avec e un ensemble de sommets.
  * Parcourt l'ensemble de sommets et affiche ses sommets et arêtes
  * auteur: Alexandre Tosi
- * verificateur: ??
+ * verificateur: Romain Allemand
  * complexité: O(n)
  */
 void display_ens_de_sommets(ens_de_sommets e){
