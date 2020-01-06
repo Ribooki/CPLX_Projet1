@@ -1,5 +1,11 @@
 #include "graphUtils.h"
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 int arc(graphe_l g, sommet x, sommet y)
 {
   liste tmp = g.a[x];
@@ -18,6 +24,12 @@ int arc(graphe_l g, sommet x, sommet y)
   return 0;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void successeurs(graphe_l g, sommet x, ens_de_sommets *e)
 {
   liste l;
@@ -29,6 +41,12 @@ void successeurs(graphe_l g, sommet x, ens_de_sommets *e)
   }
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void predecesseurs(graphe_l g, sommet x, ens_de_sommets *e)
 {
   for(int i = 0 ; i < g.n ; i++) {
@@ -37,6 +55,12 @@ void predecesseurs(graphe_l g, sommet x, ens_de_sommets *e)
   }
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void addVertex(ens_de_sommets *e, sommet y)
 {
   ens_de_sommets p = malloc(sizeof(Couple));
@@ -45,6 +69,12 @@ void addVertex(ens_de_sommets *e, sommet y)
   *e = p;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void removeFirst(ens_de_sommets *e)
 {
     liste tmp = *e;
@@ -52,6 +82,12 @@ void removeFirst(ens_de_sommets *e)
     *e = tmp;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 int contains(ens_de_sommets *e, sommet y)
 {
     liste tmp = *e;
@@ -63,6 +99,12 @@ int contains(ens_de_sommets *e, sommet y)
     return 0;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void display_graphe(graphe_l g){
 	for(int i=0 ; i<g.n ; i++){
 		printf("%d : ", i);
@@ -81,6 +123,12 @@ void display_graphe(graphe_l g){
 	}
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void display_ens_de_sommets(ens_de_sommets e){
 	liste tmp = e;
 	if(tmp != NULL){

@@ -1,5 +1,11 @@
 #include "satUtils.h"
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 Sat* createSat(){
     Sat *s = malloc(sizeof(Sat));
     s->clausesCount = 0;
@@ -8,6 +14,12 @@ Sat* createSat(){
     return s;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 Clause* createClause(){
     Clause *c = malloc(sizeof(Clause));
     c->verticesCount = 0;
@@ -15,6 +27,12 @@ Clause* createClause(){
     return c;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 Vertex* createVertex(int isNeg, edge edg){
     if(isNeg > 1 || isNeg < 0) return NULL;
     Vertex *v = malloc(sizeof(Vertex));
@@ -23,6 +41,12 @@ Vertex* createVertex(int isNeg, edge edg){
     return v;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 int addClauseInSat(Sat *s, Clause *c){
     if(c == NULL || s == NULL) return 0;
     // Passage en 3-SAT ?
@@ -41,6 +65,12 @@ int addClauseInSat(Sat *s, Clause *c){
     return 1;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 int addVertexInClause(Sat *s, Clause *c, Vertex *v){
     if(c == NULL || v == NULL) return 0;
     c->verticesCount += 1;
@@ -53,6 +83,12 @@ int addVertexInClause(Sat *s, Clause *c, Vertex *v){
     return 1;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void displayVertex(Vertex *v, int isFirst){
     if(isFirst == 0)
         printf(" v ");
@@ -64,6 +100,12 @@ void displayVertex(Vertex *v, int isFirst){
     }
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void displaySat(Sat* s){
     printf("clausesCount : %d\n", s->clausesCount);
     printf("nbVertex : %d\n", s->differentsVerticesCount);
@@ -76,6 +118,12 @@ void displaySat(Sat* s){
     }
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void satToFile(Sat* s, char* path){
    FILE *file = fopen(path, "w+");
 
@@ -96,6 +144,12 @@ void satToFile(Sat* s, char* path){
    printf("SAT printed in %s\n", path);
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void miniSolve(char* cnf, char* out){
     pid_t pid;
     pid = fork();

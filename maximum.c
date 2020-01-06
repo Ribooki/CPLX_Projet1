@@ -1,5 +1,11 @@
 #include "maximum.h"
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 int count_vertex(ens_de_sommets e)
 {
     int count = 0;
@@ -11,6 +17,12 @@ int count_vertex(ens_de_sommets e)
     return count;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 int existe_desert_maximum_exacte(graphe_l g, int k)
 {
     ens_de_sommets e = NULL;
@@ -28,6 +40,12 @@ int existe_desert_maximum_exacte(graphe_l g, int k)
     return 0;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 int existe_desert_maximum_incomplet(graphe_l g, int k)
 {
     ens_de_sommets e = NULL;

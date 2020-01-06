@@ -1,5 +1,11 @@
 #include "maximal.h"
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 ens_de_sommets calcul_graphe_maximal(graphe_l g, sommet x)
 {
     ens_de_sommets e = NULL;

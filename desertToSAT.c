@@ -1,5 +1,11 @@
 #include "desertToSAT.h"
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 Sat* toSAT(graphe_l g){
     Sat* tmpSAT = createSat();
     
@@ -19,6 +25,12 @@ Sat* toSAT(graphe_l g){
     return tmpSAT;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void solveGrapheInSAT(graphe_l g, int k){
     Sat* sat = toSAT(g);
     displaySat(sat);
@@ -54,6 +66,12 @@ void solveGrapheInSAT(graphe_l g, int k){
     //remove("tmpOUT.txt");
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 int getNbVertexInSol(char* out){
     FILE* file = fopen(out, "r");
     int nbInSol = 0;
@@ -68,6 +86,12 @@ int getNbVertexInSol(char* out){
     return nbInSol;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 int isSatisfiable(char* out){
     FILE* file = fopen(out, "r");
     char buff[255];

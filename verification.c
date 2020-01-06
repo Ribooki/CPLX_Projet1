@@ -1,5 +1,11 @@
 #include "verification.h"
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 int isDesert(graphe_l g, ens_de_sommets *e)
 {
   liste tmp = NULL, tmp2 = NULL;
@@ -27,6 +33,12 @@ int isDesert(graphe_l g, ens_de_sommets *e)
   return 1;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 int isMaximal(graphe_l g, ens_de_sommets *e)
 {
     graphe_l tmp = g;
