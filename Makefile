@@ -4,7 +4,7 @@ EXEC = main
 FILE =
 SRC = main.c graphUtils.c utils.c verification.c maximal.c maximum.c satUtils.c desertToSAT.c SATToDesert.c
 OBJ = $(SRC:.c=.o)
-SUPPR = *.o tmpOUT.txt
+SUPPR = *.o tmpOUT.txt tmpSAT.cnf
 
 all:$(EXEC)
 
