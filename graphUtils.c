@@ -6,7 +6,7 @@
  * Si les 2 sommets sont bien dans le graph, on vérifie chaque arête du sommet x en vérifiant que son successeur soit y.
  * Si oui, on retourne 1 sinon on retourne 0 à la fin du parcourt.
  * auteur: Alexandre Tosi
- * verificateur: Thomas Rieffel 
+ * verificateur: Thomas Rieffel
  * complexité: O(m)
  */
 int arc(graphe_l g, sommet x, sommet y)
@@ -115,9 +115,9 @@ int contains(ens_de_sommets *e, sommet y)
  * spec: Affiche le graph donné.
  * Avec g un graph.
  * parcourt le graph et affiche ses sommets et arêtes
- * auteur: ??
+ * auteur: Alexandre Tosi
  * verificateur: ??
- * complexité: O(nm)
+ * complexité: O(n + m)
  */
 void display_graphe(graphe_l g){
 	for(int i=0 ; i<g.n ; i++){
@@ -141,9 +141,9 @@ void display_graphe(graphe_l g){
  * spec: Affiche l'ensemble de sommets donné.
  * Avec e un ensemble de sommets.
  * Parcourt l'ensemble de sommets et affiche ses sommets et arêtes
- * auteur: ??
+ * auteur: Alexandre Tosi
  * verificateur: ??
- * complexité: O(nm)
+ * complexité: O(n)
  */
 void display_ens_de_sommets(ens_de_sommets e){
 	liste tmp = e;

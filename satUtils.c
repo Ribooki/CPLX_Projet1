@@ -1,10 +1,10 @@
 #include "satUtils.h"
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec:
+ * auteur:
+ * verificateur:
+ * complexité:
  */
 Sat* createSat(){
     Sat *s = malloc(sizeof(Sat));
@@ -15,10 +15,10 @@ Sat* createSat(){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec:
+ * auteur:
+ * verificateur:
+ * complexité:
  */
 Clause* createClause(){
     Clause *c = malloc(sizeof(Clause));
@@ -28,10 +28,10 @@ Clause* createClause(){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec:
+ * auteur:
+ * verificateur:
+ * complexité:
  */
 Vertex* createVertex(int isNeg, edge edg){
     if(isNeg > 1 || isNeg < 0) return NULL;
@@ -42,10 +42,10 @@ Vertex* createVertex(int isNeg, edge edg){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec:
+ * auteur:
+ * verificateur:
+ * complexité:
  */
 int addClauseInSat(Sat *s, Clause *c){
     if(c == NULL || s == NULL) return 0;
@@ -62,15 +62,15 @@ int addClauseInSat(Sat *s, Clause *c){
     s->clausesCount = s->clausesCount + 1;
     s->clauses = realloc(s->clauses, sizeof(Clause) * s->clausesCount);
     s->clauses[s->clausesCount-1] = *c;
-    deleteClause(c);
+    // deleteClause(c);
     return 1;
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec:
+ * auteur:
+ * verificateur:
+ * complexité:
  */
 int addVertexInClause(Sat *s, Clause *c, Vertex *v){
     if(c == NULL || v == NULL) return 0;
@@ -87,10 +87,10 @@ int addVertexInClause(Sat *s, Clause *c, Vertex *v){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec:
+ * auteur:
+ * verificateur:
+ * complexité:
  */
 void displayVertex(Vertex *v, int isFirst){
     if(isFirst == 0)
@@ -104,10 +104,10 @@ void displayVertex(Vertex *v, int isFirst){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec:
+ * auteur:
+ * verificateur:
+ * complexité:
  */
 void displaySat(Sat* s){
     printf("clausesCount : %d\n", s->clausesCount);
@@ -122,10 +122,10 @@ void displaySat(Sat* s){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec:
+ * auteur:
+ * verificateur:
+ * complexité:
  */
 void satToFile(Sat* s, char* path){
    FILE *file = fopen(path, "w+");
@@ -148,10 +148,10 @@ void satToFile(Sat* s, char* path){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec:
+ * auteur:
+ * verificateur:
+ * complexité:
  */
 void miniSolve(char* cnf, char* out){
     pid_t pid;
