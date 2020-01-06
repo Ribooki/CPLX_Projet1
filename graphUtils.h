@@ -1,3 +1,6 @@
+#ifndef __GRAPHUTILS__
+#define __GRAPHUTILS__
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -43,3 +46,5 @@ void display_graphe(graphe_l g);
 
 /* Affiche un ensemble de sommets */
 void display_ens_de_sommets(ens_de_sommets e);
+
+#endif /* __GRAPHUTILS__ */

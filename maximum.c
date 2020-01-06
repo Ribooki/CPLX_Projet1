@@ -4,8 +4,8 @@
  * spec: Compte le nombre de sommets dans l'ensemble donné
  * Avec e l'ensemble de sommets
  * Retourne le nombre de sommets
- * auteur: 
- * verificateur: 
+ * auteur:
+ * verificateur:
  * complexité: O(n)
  */
 int count_vertex(ens_de_sommets e)
@@ -35,7 +35,7 @@ int existe_desert_maximum_exacte(graphe_l g, int k)
         e = calcul_graphe_maximal(g, x);
         if(count_vertex(e) >= k)
         {
-            display_ens_de_sommets(e);
+            // display_ens_de_sommets(e);
             deleteList(&e);
             return 1;
         }

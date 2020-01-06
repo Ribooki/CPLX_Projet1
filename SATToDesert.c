@@ -13,7 +13,7 @@
 graphe_l* satToGraph(char* fileAbsolutePath)
 {
     graphe_l *graph = NULL;
-    int s1 = 0, s2 = 0, s3 = 0, c;
+    int s1 = 0, s2 = 0, s3 = 0;
     char buffer[1024];
     char tmp = 0;
     FILE *file = NULL;

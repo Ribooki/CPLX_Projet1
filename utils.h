@@ -1,3 +1,6 @@
+#ifndef __UTILS__
+#define __UTILS__
+
 #include "graphUtils.h"
 #include "satUtils.h"
 
@@ -12,3 +15,5 @@ void freeTheG(graphe_l *g);
 
 /* Supprime une liste du graphe */
 void deleteList(liste *l);
+
+#endif /* __UTILS__ */

@@ -1,25 +1,17 @@
-/*
-#include "maximum.h"
-
-int main()
-{
-  //graphe_l *g = readFile("files/1-FullIns_3");
-  graphe_l *g = readFile("test.txt");
-  //display_graphe(*g);
-
-  printf("Existe-t-il un sous-graphe désert de taille 10 avec la méthode exacte ? %d\n", existe_desert_maximum_exacte(*g, 2));
-  // printf("Existe-t-il un sous-graphe désert de taille 10 avec la méthode incomplète ? %d\n", existe_desert_maximum_incomplet(*g, 3));
-
-  freeTheG(g);
-  return 0;
-}*/
 #include "SATToDesert.h"
+#include "graphUtils.h"
+#include "utils.h"
+#include "maximum.h"
+#include "maximal.h"
+#include "verification.h"
 
 int main(){
-    graphe_l *g = readFile("test.txt");
     // graphe_l *g = readFile("files/1-FullIns_3");
-    //graphe_l *g = readFile("test.txt");
-    display_graphe(*g);
+    graphe_l *g = readFile("test.txt");
+
+    printf("Existe-t-il un sous-graphe désert de taille 3 avec la méthode exacte ? %s\n", existe_desert_maximum_exacte(*g, 3) ? "oui" : "non");
+    printf("Existe-t-il un sous-graphe désert de taille 3 avec la méthode incomplète ? %s\n", existe_desert_maximum_incomplet(*g, 3) ? "oui" : "non");
+
     solveGrapheInSAT(*g, 3);
     freeTheG(g);
 
