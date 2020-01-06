@@ -1,10 +1,11 @@
 #include "desertToSAT.h"
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: Transforme des données d'un problème de graphe désert en données de problème SAT
+ * g est le graphe, k le nombre minimum de sommets du sous-graphe désert souhaité
+ * auteur: Romain Allemand
+ * verificateur: Alexandre Tosi
+ * complexité: O(2^n + m)
  */
 Sat* toSAT(graphe_l g, int k){
     Sat* tmpSAT = createSat();
@@ -30,15 +31,16 @@ Sat* toSAT(graphe_l g, int k){
     for(int i=0 ; i<g.n ; i++)
         tab[i]=0;
     generateAllNotPossible(tmpSAT, tab, k, 0);
-
+    
     return tmpSAT;
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: Génère toutes les combinaisons possibles où le nombre de littéraux positifs est inférieur à k.
+ * sat est le programme SAT généré à partir du problème de sous-graphe désert, tab[] est un tableau de booléens qui décrit si oui ou non un littéral est positif, k est le k du problème de sous-graphe désert, i est l'indice auquel en est la génération de la combinaison
+ * auteur: Romain ALLEMAND
+ * verificateur: Thomas Reiffel
+ * complexité: O(2^n)
  */
 void generateAllNotPossible(Sat* sat, int tab[], int k, int i){
     int nbPos = 0;
@@ -64,10 +66,11 @@ void generateAllNotPossible(Sat* sat, int tab[], int k, int i){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: Ajoute une clause dans le problème SAT à partir d'un tableau
+ * sat est le problème sat en cours de génération, tab est un tableau de booléens décrivant si oui ou non un littéral est positif dans la clause
+ * auteur: Romain ALLEMAND
+ * verificateur: Alexandre Tosi
+ * complexité: O(n)
  */
 void tabToClauseInSAT(Sat* sat, int tab[]){
     Clause* cl = createClause();
@@ -86,10 +89,10 @@ void tabToClauseInSAT(Sat* sat, int tab[]){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: Résout un problème de graphe en le transformant en problème SAT
+ * g le graphe et k la taille minimale du sous-graphe désert voulu
+ * auteur: Romain Allemand
+ * verificateur: Thomas Reiffel
  */
 void solveGrapheInSAT(graphe_l g, int k){
     Sat* sat = toSAT(g, k);
@@ -133,10 +136,11 @@ void solveGrapheInSAT(graphe_l g, int k){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: Retourne le nombre de littéraux positifs dans une solution proposée par miniSAT
+ * out est le path du fichier solution généré par miniSAT
+ * auteur: Romain Allemand
+ * verificateur: Alexandre Tosi
+ * complexité: O(n)
  */
 int getNbVertexInSol(char* out){
     FILE* file = fopen(out, "r");
@@ -154,10 +158,11 @@ int getNbVertexInSol(char* out){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: Retourne si oui ou non la solution proposée par miniSAT est une solution SATISFIABLE
+ * out est le path du fichier solution généré par miniSAT
+ * auteur: Romain Allemand
+ * verificateur: Thomas Reiffel
+ * complexité: O(1)
  */
 int isSatisfiable(char* out){
     FILE* file = fopen(out, "r");
