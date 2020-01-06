@@ -20,8 +20,8 @@ graphe_l* satToGraph(char* fileAbsolutePath)
     while(fgetc(file) == 'c')
         fgets(buffer, 1024, file);
 
-    //On enregistre les données là où il faut
-    fscanf(file, "%s %d %d", buffer, &graph->n, &graph->e);
+    //On enregistre les nombres de sommet et d'arête
+    fscanf(file, " cnf %d %d", &graph->n, &graph->e);
     graph->n = 2*graph->n;
     for(sommet s = 0 ; s < graph->n ; s++)
         graph->a[s] = NULL;
@@ -29,7 +29,7 @@ graphe_l* satToGraph(char* fileAbsolutePath)
     //TODO : On reste en 3-SAT
     // Création du graphe
     while(fscanf(file, "%d %d %d %c", &s1, &s2, &s3, &tmp) == 4) {
-        printf("s1 : %d ; s2 : %d ; s3 : %d\n", s1, s2, s3);
+        // printf("s1 : %d ; s2 : %d ; s3 : %d\n", s1, s2, s3);
         addVertex(&graph->a[s1], s2);
         addVertex(&graph->a[s2], s1);
 
