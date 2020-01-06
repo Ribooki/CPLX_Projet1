@@ -25,7 +25,7 @@ run:
 	@./$(EXEC) $(FILE)
 
 valgrind:
-	valgrind -v --track-origins=yes ./$(EXEC) $(FILE)
+	valgrind -v --leak-check=full --track-origins=yes ./$(EXEC) $(FILE)
 
 clean:
 	@rm -rf $(SUPPR)
