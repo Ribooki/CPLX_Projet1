@@ -1,6 +1,6 @@
 #include "desertToSAT.h"
 
-Sat* toSAT(graphe_l g){
+Sat* toSAT(graphe_l g, int k){
     Sat* tmpSAT = createSat();
     
     for(int i=0 ; i<g.n ; i++){
@@ -16,11 +16,54 @@ Sat* toSAT(graphe_l g){
       }
     }
 
+    int tab[g.n];
+    for(int i=0 ; i<g.n ; i++)
+        tab[i]=0;
+    generateAllNotPossible(tmpSAT, tab, k, 0);
+    
     return tmpSAT;
 }
 
+void generateAllNotPossible(Sat* sat, int tab[], int k, int i){
+    int nbPos = 0;
+    for(int j=0 ; j<sat->differentsVerticesCount ; j++){
+        if(tab[j] == 1)
+            nbPos+=1;
+    }
+    
+    if(i == sat->differentsVerticesCount){
+        if(nbPos < k){
+            tabToClauseInSAT(sat, tab);
+            /*for(int j=0 ; j<sat->differentsVerticesCount ; j++)
+                printf("%d ", tab[j]);
+            printf("\n");*/
+        }
+        return;
+    }
+    tab[i]=0;
+    generateAllNotPossible(sat, tab, k, i+1);
+
+    tab[i]=1;
+    generateAllNotPossible(sat, tab, k, i+1);
+}
+
+void tabToClauseInSAT(Sat* sat, int tab[]){
+    Clause* cl = createClause();
+    for(int j=0 ; j<sat->differentsVerticesCount ; j++){
+        if(tab[j] == 1){
+            Vertex* vt = createVertex(1, j+1);
+            addVertexInClause(sat, cl, vt);
+        }
+        else{
+            Vertex* vt = createVertex(0, j+1);
+            addVertexInClause(sat, cl, vt);
+        }
+    }
+    addClauseInSat(sat, cl);
+}
+
 void solveGrapheInSAT(graphe_l g, int k){
-    Sat* sat = toSAT(g);
+    Sat* sat = toSAT(g, k);
     displaySat(sat);
     satToFile(sat, "tmpSAT.cnf");
     miniSolve("tmpSAT.cnf", "tmpOUT.txt");
@@ -40,8 +83,9 @@ void solveGrapheInSAT(graphe_l g, int k){
                addVertexInClause(sat, newCl, vt);
            }
        }
+       fclose(file);
        addClauseInSat(sat, newCl);
-       displaySat(sat);
+       //displaySat(sat);
        satToFile(sat, "tmpSAT.cnf");
        miniSolve("tmpSAT.cnf", "tmpOUT.txt");
     }
@@ -50,7 +94,7 @@ void solveGrapheInSAT(graphe_l g, int k){
         printf("Il existe une solution pour ce problème.\n");
     else
         printf("Il n'existe pas de solution pour ce problème.\n");
-    remove("tmpSAT.cnf");
+    //remove("tmpSAT.cnf");
     //remove("tmpOUT.txt");
 }
 
@@ -64,6 +108,7 @@ int getNbVertexInSol(char* out){
         if(tmp > 0)
             nbInSol+=1;
     }
+    fclose(file);
     printf("%d vertex positifs dans la solution.\n", nbInSol);
     return nbInSol;
 }
