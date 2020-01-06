@@ -1,10 +1,11 @@
 #include "satUtils.h"
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: créé et initialise la structure Sat.
+ * renvoie le pointeur de la structure.
+ * auteur: Thomas Rieffel
+ * verificateur: ??
+ * complexité: O(1)
  */
 Sat* createSat(){
     Sat *s = malloc(sizeof(Sat));
@@ -15,10 +16,11 @@ Sat* createSat(){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: créé et initialise une clause.
+ * Renvoie le pointeur de la clause.
+ * auteur: Thomas Rieffel
+ * verificateur: ??
+ * complexité: O(1)
  */
 Clause* createClause(){
     Clause *c = malloc(sizeof(Clause));
@@ -28,10 +30,11 @@ Clause* createClause(){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: créé et initialise un vertex.
+ * Renvoie le pointeur du vertex.
+ * auteur: Thomas Rieffel
+ * verificateur: ??
+ * complexité: O(1)
  */
 Vertex* createVertex(int isNeg, edge edg){
     if(isNeg > 1 || isNeg < 0) return NULL;
@@ -42,10 +45,11 @@ Vertex* createVertex(int isNeg, edge edg){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: Ajoute une clause dans une structure sat.
+ * Avec s un pointeur Sat et c une Clause
+ * auteur: Thomas Rieffel 
+ * verificateur: ??
+ * complexité: O(1)
  */
 int addClauseInSat(Sat *s, Clause *c){
     if(c == NULL || s == NULL) return 0;
@@ -67,10 +71,11 @@ int addClauseInSat(Sat *s, Clause *c){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: Ajoute un sommet dans une clause sat.
+ * Avec s un pointeur Sat, c une Clause et v un sommet.
+ * auteur: Thomas Rieffel
+ * verificateur: ??
+ * complexité: O(1)
  */
 int addVertexInClause(Sat *s, Clause *c, Vertex *v){
     if(c == NULL || v == NULL) return 0;
@@ -87,8 +92,9 @@ int addVertexInClause(Sat *s, Clause *c, Vertex *v){
 }
 
 /**
- * spec: 
- * auteur: 
+ * spec: Affiche le sommet donné.
+ * Avec v un sommet et isFirst qui est à 1 si le sommet est le premier de la clause, 0 sinon.
+ * auteur: ??
  * verificateur: 
  * complexité: 
  */
@@ -104,8 +110,10 @@ void displayVertex(Vertex *v, int isFirst){
 }
 
 /**
- * spec: 
- * auteur: 
+ * spec: Affiche le probleme Sat dans son ensemble.
+ * Avec s un Sat.
+ * parcourt chaque clause et les affiches
+ * auteur: Thomas Rieffel
  * verificateur: 
  * complexité: 
  */
@@ -122,10 +130,11 @@ void displaySat(Sat* s){
 }
 
 /**
- * spec: 
- * auteur: 
+ * spec: transfère une structure Sat vers un fichier cnf.
+ * parcourt le Sat et pour chaque clause créé une ligne et y met les littérraux
+ * auteur: ??
  * verificateur: 
- * complexité: 
+ * complexité: O(n)
  */
 void satToFile(Sat* s, char* path){
    FILE *file = fopen(path, "w+");
@@ -148,10 +157,9 @@ void satToFile(Sat* s, char* path){
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: Appel le solveur mini-sat.
+ * auteur: Alexandre Tosi
+ * verificateur: Thomas Rieffel
  */
 void miniSolve(char* cnf, char* out){
     pid_t pid;
@@ -166,17 +174,20 @@ void miniSolve(char* cnf, char* out){
     printf("%s résolu et solution écrite dans %s\n", cnf, out);
 }
 
+//supprime la structure d'un vertex
 void deleteVertex(Vertex *v)
 {
     free(v);
 }
 
+//supprime la structure d'une clause et tous ses litérraux
 void deleteClause(Clause *c)
 {
     deleteVertex(c->vertices);
     free(c);
 }
 
+//supprime la structure sat et toutes ses clauses 
 void deleteSat(Sat *s)
 {
     deleteClause(s->clauses);

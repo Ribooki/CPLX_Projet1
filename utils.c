@@ -32,10 +32,7 @@ graphe_l* readFile(char* fileAbsolutePath)
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * Marche pas
  */
 Sat* readSatFile(char* fileAbsolutePath)
 {
