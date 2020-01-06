@@ -4,3 +4,8 @@ Pour lancer le programme :
 	./main fichier
 Pour lancer le programme avec un fichier par défaut :
 	make run
+
+Pour compiler le test de la question 1 :
+	make testV
+Pour lancer :
+	./testV fichier
