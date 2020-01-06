@@ -94,14 +94,16 @@ void tabToClauseInSAT(Sat* sat, int tab[]){
 void solveGrapheInSAT(graphe_l g, int k){
     Sat* sat = toSAT(g, k);
     Vertex *vt = NULL;
+    Clause *newCl = NULL;
     displaySat(sat);
     satToFile(sat, "tmpSAT.cnf");
     miniSolve("tmpSAT.cnf", "tmpOUT.txt");
+    
     while(isSatisfiable("tmpOUT.txt") == 1 && getNbVertexInSol("tmpOUT.txt") < k){
        FILE* file = fopen("tmpOUT.txt", "r");
        char buff[255];
        int tmp=0;
-       Clause* newCl = createClause();
+       newCl = createClause();
        fscanf(file, "%s", buff);
        while(fscanf(file, "%d", &tmp) == 1){
            if(tmp > 0){
@@ -113,6 +115,7 @@ void solveGrapheInSAT(graphe_l g, int k){
                addVertexInClause(sat, newCl, vt);
            }
        }
+        
        fclose(file);
        addClauseInSat(sat, newCl);
        //displaySat(sat);
