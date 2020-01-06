@@ -1,10 +1,11 @@
 #include "utils.h"
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: fileAbsolutePath est une chaine de caractères qui représente le fichier
+ * à lire. On obtient un graphe correspondant au fichier lu.
+ * auteur: Alexandre Tosi
+ * verificateur: Romain Allemand
+ * complexité: O(n)
  */
 graphe_l* readFile(char* fileAbsolutePath)
 {
@@ -32,10 +33,10 @@ graphe_l* readFile(char* fileAbsolutePath)
 }
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec:
+ * auteur:
+ * verificateur:
+ * complexité:
  */
 Sat* readSatFile(char* fileAbsolutePath)
 {

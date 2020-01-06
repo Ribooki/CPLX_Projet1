@@ -7,7 +7,7 @@
  * Si oui, on retourne 1 sinon on retourne 0 à la fin du parcourt.
  * auteur: Alexandre Tosi
  * verificateur: Thomas Rieffel
- * complexité: O(m)
+ * complexité: O(d^+(x))
  */
 int arc(graphe_l g, sommet x, sommet y)
 {
