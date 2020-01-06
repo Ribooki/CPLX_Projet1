@@ -1,5 +1,11 @@
 #include "SATToDesert.h"
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 graphe_l* satToGraph(char* fileAbsolutePath)
 {
     graphe_l *graph = NULL;

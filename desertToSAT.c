@@ -1,5 +1,11 @@
 #include "desertToSAT.h"
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 Sat* toSAT(graphe_l g, int k){
     Sat* tmpSAT = createSat();
     liste tmp = NULL;
@@ -28,6 +34,12 @@ Sat* toSAT(graphe_l g, int k){
     return tmpSAT;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void generateAllNotPossible(Sat* sat, int tab[], int k, int i){
     int nbPos = 0;
     for(int j=0 ; j<sat->differentsVerticesCount ; j++){
@@ -51,6 +63,12 @@ void generateAllNotPossible(Sat* sat, int tab[], int k, int i){
     generateAllNotPossible(sat, tab, k, i+1);
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void tabToClauseInSAT(Sat* sat, int tab[]){
     Clause* cl = createClause();
     Vertex *vt = NULL;
@@ -67,17 +85,25 @@ void tabToClauseInSAT(Sat* sat, int tab[]){
     addClauseInSat(sat, cl);
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 void solveGrapheInSAT(graphe_l g, int k){
     Sat* sat = toSAT(g, k);
     Vertex *vt = NULL;
+    Clause *newCl = NULL;
     displaySat(sat);
     satToFile(sat, "tmpSAT.cnf");
     miniSolve("tmpSAT.cnf", "tmpOUT.txt");
+    
     while(isSatisfiable("tmpOUT.txt") == 1 && getNbVertexInSol("tmpOUT.txt") < k){
        FILE* file = fopen("tmpOUT.txt", "r");
        char buff[255];
        int tmp=0;
-       Clause* newCl = createClause();
+       newCl = createClause();
        fscanf(file, "%s", buff);
        while(fscanf(file, "%d", &tmp) == 1){
            if(tmp > 0){
@@ -89,6 +115,7 @@ void solveGrapheInSAT(graphe_l g, int k){
                addVertexInClause(sat, newCl, vt);
            }
        }
+        
        fclose(file);
        addClauseInSat(sat, newCl);
        //displaySat(sat);
@@ -105,6 +132,12 @@ void solveGrapheInSAT(graphe_l g, int k){
     deleteSat(sat);
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 int getNbVertexInSol(char* out){
     FILE* file = fopen(out, "r");
     int nbInSol = 0;
@@ -120,6 +153,12 @@ int getNbVertexInSol(char* out){
     return nbInSol;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 int isSatisfiable(char* out){
     FILE* file = fopen(out, "r");
     char buff[255];

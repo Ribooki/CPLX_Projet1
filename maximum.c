@@ -1,5 +1,13 @@
 #include "maximum.h"
 
+/**
+ * spec: Compte le nombre de sommets dans l'ensemble donné
+ * Avec e l'ensemble de sommets
+ * Retourne le nombre de sommets
+ * auteur: 
+ * verificateur: 
+ * complexité: O(n)
+ */
 int count_vertex(ens_de_sommets e)
 {
     int count = 0;
@@ -11,6 +19,15 @@ int count_vertex(ens_de_sommets e)
     return count;
 }
 
+/**
+ * spec: Vérifie si il existe un desert maximum pour un k donné
+ * Avec g un graph et k le nombre de sommets minimum devant composer le désert
+ * Parcourt le graph en essayant pour chaque sommet son graph maximal jusqu'à arriver à un desert dont le nombre de sommets > k sinon s'arrete à la fin du parcourt
+ * Retourne 1 si il existe, 0 sinon
+ * auteur: 
+ * verificateur: 
+ * complexité: O(n^3)
+ */
 int existe_desert_maximum_exacte(graphe_l g, int k)
 {
     ens_de_sommets e = NULL;
@@ -28,6 +45,15 @@ int existe_desert_maximum_exacte(graphe_l g, int k)
     return 0;
 }
 
+/**
+ * spec: Vérifie si il existe un desert maximum pour un k donné
+ * Avec g un graph et k le nombre de sommets minimum devant composer le désert
+ * Parcourt le graph en essayant pour 1 sommet sur 2 son graph maximal jusqu'à arriver à un desert dont le nombre de sommets > k sinon s'arrete à la fin du parcourt
+ * Retourne 1 si il existe, 0 sinon
+ * auteur: 
+ * verificateur: 
+ * complexité: O(n/2*(n^2))
+ */
 int existe_desert_maximum_incomplet(graphe_l g, int k)
 {
     ens_de_sommets e = NULL;

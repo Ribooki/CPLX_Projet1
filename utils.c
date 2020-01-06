@@ -1,5 +1,11 @@
 #include "utils.h"
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 graphe_l* readFile(char* fileAbsolutePath)
 {
     graphe_l * graph = malloc(sizeof(graphe_l));
@@ -25,6 +31,12 @@ graphe_l* readFile(char* fileAbsolutePath)
     return graph;
 }
 
+/**
+ * spec: 
+ * auteur: 
+ * verificateur: 
+ * complexité: 
+ */
 Sat* readSatFile(char* fileAbsolutePath)
 {
   FILE *file = NULL;

@@ -1,5 +1,15 @@
 #include "maximal.h"
 
+/**
+ * spec: Génère le graph désert maximal pour un sommet donné
+ * Avec un graph g et un sommet x
+ * On parcourt tous les sommets du graph en vérifiant qu'ils ne soient pas dans la liste d'adjacence qui se met a jour en incluant les voisins du nouveau sommet
+ * ajouté dans l'ensemble du graph desert
+ * Retourne l'ensemble de donné généré
+ * auteur: 
+ * verificateur: 
+ * complexité: O(n^2)
+ */
 ens_de_sommets calcul_graphe_maximal(graphe_l g, sommet x)
 {
     ens_de_sommets e = NULL;
