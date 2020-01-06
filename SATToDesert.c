@@ -1,10 +1,14 @@
 #include "SATToDesert.h"
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec: Transorme un Probleme SAT vers un graph.
+ * Avec fileAbsolutePath, le chamin du fichier a lire.
+ * La transformation se fait en lisant le fichier, chaque ligne représentant une clause, on transforme chaque littéral en sommet et on met en voisins
+ * les autres littéraux  de la clause.
+ * Renvoi le pointeur du graph généré.
+ * auteur: Alexandre Tosi
+ * verificateur: Romain Allemand
+ * complexité: O(n)
  */
 graphe_l* satToGraph(char* fileAbsolutePath)
 {
