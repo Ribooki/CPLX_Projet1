@@ -16,9 +16,50 @@ Sat* toSAT(graphe_l g, int k){
       }
     }
 
+    int tab[g.n];
+    for(int i=0 ; i<g.n ; i++)
+        tab[i]=0;
+    generateAllNotPossible(tmpSAT, tab, k, 0);
     
-
     return tmpSAT;
+}
+
+void generateAllNotPossible(Sat* sat, int tab[], int k, int i){
+    int nbPos = 0;
+    for(int j=0 ; j<sat->differentsVerticesCount ; j++){
+        if(tab[j] == 1)
+            nbPos+=1;
+    }
+    
+    if(i == sat->differentsVerticesCount){
+        if(nbPos < k){
+            tabToClauseInSAT(sat, tab);
+            /*for(int j=0 ; j<sat->differentsVerticesCount ; j++)
+                printf("%d ", tab[j]);
+            printf("\n");*/
+        }
+        return;
+    }
+    tab[i]=0;
+    generateAllNotPossible(sat, tab, k, i+1);
+
+    tab[i]=1;
+    generateAllNotPossible(sat, tab, k, i+1);
+}
+
+void tabToClauseInSAT(Sat* sat, int tab[]){
+    Clause* cl = createClause();
+    for(int j=0 ; j<sat->differentsVerticesCount ; j++){
+        if(tab[j] == 1){
+            Vertex* vt = createVertex(1, j+1);
+            addVertexInClause(sat, cl, vt);
+        }
+        else{
+            Vertex* vt = createVertex(0, j+1);
+            addVertexInClause(sat, cl, vt);
+        }
+    }
+    addClauseInSat(sat, cl);
 }
 
 void solveGrapheInSAT(graphe_l g, int k){

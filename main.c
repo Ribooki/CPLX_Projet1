@@ -17,8 +17,8 @@ int main()
 
 int main(){
 
-    //graphe_l *g = readFile("files/1-FullIns_3");
-    graphe_l *g = readFile("test.txt");
+    graphe_l *g = readFile("files/1-FullIns_3");
+    //graphe_l *g = readFile("test.txt");
     display_graphe(*g);
     solveGrapheInSAT(*g, 3);
 
