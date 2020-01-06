@@ -1,7 +1,7 @@
 CC = gcc -g
 CFLAGS = -W -Wall -pedantic -ansi -std=c99
 EXEC = main
-FILE =
+FILE = files/1-FullIns_3
 SRC = main.c graphUtils.c utils.c verification.c maximal.c maximum.c satUtils.c desertToSAT.c SATToDesert.c
 OBJ = $(SRC:.c=.o)
 SUPPR = *.o tmpOUT.txt tmpSAT.cnf
