@@ -9,3 +9,8 @@ Pour compiler le test de la question 1 :
 	make testV
 Pour lancer :
 	./testV fichier
+	
+Pour compiler le test de desertToSAT  :
+	make testDesertToSAT
+Pour lancer :
+	./testDesertToSAT fichier

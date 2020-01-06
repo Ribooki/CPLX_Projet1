@@ -26,6 +26,9 @@ run:
 
 testV: testVerification.o graphUtils.o utils.o satUtils.o verification.o
 	@$(CC) -o $@ $^ $(LDFLAGS)
+	
+testDesertToSAT: testDesertToSAT.o desertToSAT.o  graphUtils.o utils.o satUtils.o
+	@$(CC) -o $@ $^ $(LDFLAGS)
 
 valgrind:
 	valgrind -v --leak-check=full --track-origins=yes ./$(EXEC) $(FILE)
