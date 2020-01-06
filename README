@@ -1,0 +1,6 @@
+Pour compiler le programme principal :
+	make
+Pour lancer le programme :
+	./main fichier
+Pour lancer le programme avec un fichier par défaut :
+	make run

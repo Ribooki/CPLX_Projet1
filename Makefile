@@ -4,7 +4,7 @@ EXEC = main
 FILE = files/1-FullIns_3
 SRC = main.c graphUtils.c utils.c verification.c maximal.c maximum.c satUtils.c desertToSAT.c SATToDesert.c
 OBJ = $(SRC:.c=.o)
-SUPPR = *.o tmpOUT.txt tmpSAT.cnf
+SUPPR = *.o tmpOUT.txt tmpSAT.cnf testV
 
 all:$(EXEC)
 
@@ -23,6 +23,9 @@ gdb:
 
 run:
 	@./$(EXEC) $(FILE)
+
+testV: testVerification.o graphUtils.o utils.o satUtils.o verification.o
+	@$(CC) -o $@ $^ $(LDFLAGS)
 
 valgrind:
 	valgrind -v --leak-check=full --track-origins=yes ./$(EXEC) $(FILE)

@@ -5,9 +5,9 @@
  * Avec g le graph et e l'ensemble de sommets représentant le sous-ensemble désert.
  * Pour chaque sommet dans l'ensemble, on vérifie si un autre sommet de cet ensemble est reliable par une arête.
  * Retourne 1 si vraie , 0 sinon.
- * auteur: Alexandre Tosi
- * verificateur: Thomas Rieffel
- * complexité: O(nlog(n)m)
+ * auteur: Thomas Rieffel
+ * verificateur: Romain Allemand
+ * complexité: O((n + m).d^+(x))
  */
 int isDesert(graphe_l g, ens_de_sommets *e)
 {
