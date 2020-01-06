@@ -115,8 +115,8 @@ int contains(ens_de_sommets *e, sommet y)
  * spec: Affiche le graph donné.
  * Avec g un graph.
  * parcourt le graph et affiche ses sommets et arêtes
- * auteur: Alexandre Tosi
- * verificateur: ??
+ * auteur: Romain Allemand
+ * verificateur: Alexandre Tosi
  * complexité: O(n + m)
  */
 void display_graphe(graphe_l g){
