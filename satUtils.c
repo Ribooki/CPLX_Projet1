@@ -62,7 +62,6 @@ int addClauseInSat(Sat *s, Clause *c){
     s->clausesCount = s->clausesCount + 1;
     s->clauses = realloc(s->clauses, sizeof(Clause) * s->clausesCount);
     s->clauses[s->clausesCount-1] = *c;
-    deleteClause(c);
     return 1;
 }
 
