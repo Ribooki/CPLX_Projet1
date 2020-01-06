@@ -13,14 +13,14 @@ int main()
   freeTheG(g);
   return 0;
 }*/
-//#include "desertToSAT.h"
 #include "SATToDesert.h"
 
 int main(){
 
+    //graphe_l *g = readFile("files/1-FullIns_3");
     graphe_l *g = readFile("test.txt");
     display_graphe(*g);
-    solveGrapheInSAT(*g, 3);    
+    solveGrapheInSAT(*g, 3);
 
     return 0;
 }
