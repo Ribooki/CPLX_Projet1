@@ -8,25 +8,29 @@
  */
 Sat* toSAT(graphe_l g, int k){
     Sat* tmpSAT = createSat();
-    
+    liste tmp = NULL;
+    Clause *cl = NULL;
+    Vertex *vt1 = NULL;
+    Vertex *vt2 = NULL;
+
     for(int i=0 ; i<g.n ; i++){
-      liste tmp = g.a[i];
+      tmp = g.a[i];
       while(tmp != NULL){
-          Clause* cl = createClause();
-          Vertex* vt = createVertex(1, i+1);
-          addVertexInClause(tmpSAT, cl, vt);
-          vt = createVertex(1, tmp->st+1);
-          addVertexInClause(tmpSAT, cl, vt);
+          cl = createClause();
+          vt1 = createVertex(1, i+1);
+          vt2 = createVertex(1, tmp->st+1);
+          addVertexInClause(tmpSAT, cl, vt1);
+          addVertexInClause(tmpSAT, cl, vt2);
           addClauseInSat(tmpSAT, cl);
           tmp = tmp->suivant;
       }
     }
-
+    printf("g.n = %d\n", g.n);
     int tab[g.n];
     for(int i=0 ; i<g.n ; i++)
         tab[i]=0;
     generateAllNotPossible(tmpSAT, tab, k, 0);
-    
+
     return tmpSAT;
 }
 
@@ -42,7 +46,7 @@ void generateAllNotPossible(Sat* sat, int tab[], int k, int i){
         if(tab[j] == 1)
             nbPos+=1;
     }
-    
+
     if(i == sat->differentsVerticesCount){
         if(nbPos < k){
             tabToClauseInSAT(sat, tab);
@@ -67,13 +71,14 @@ void generateAllNotPossible(Sat* sat, int tab[], int k, int i){
  */
 void tabToClauseInSAT(Sat* sat, int tab[]){
     Clause* cl = createClause();
+    Vertex *vt = NULL;
     for(int j=0 ; j<sat->differentsVerticesCount ; j++){
         if(tab[j] == 1){
-            Vertex* vt = createVertex(1, j+1);
+            vt = createVertex(1, j+1);
             addVertexInClause(sat, cl, vt);
         }
         else{
-            Vertex* vt = createVertex(0, j+1);
+            vt = createVertex(0, j+1);
             addVertexInClause(sat, cl, vt);
         }
     }
@@ -88,6 +93,7 @@ void tabToClauseInSAT(Sat* sat, int tab[]){
  */
 void solveGrapheInSAT(graphe_l g, int k){
     Sat* sat = toSAT(g, k);
+    Vertex *vt = NULL;
     displaySat(sat);
     satToFile(sat, "tmpSAT.cnf");
     miniSolve("tmpSAT.cnf", "tmpOUT.txt");
@@ -99,11 +105,11 @@ void solveGrapheInSAT(graphe_l g, int k){
        fscanf(file, "%s", buff);
        while(fscanf(file, "%d", &tmp) == 1){
            if(tmp > 0){
-               Vertex* vt = createVertex(1, tmp);
+               vt = createVertex(1, tmp);
                addVertexInClause(sat, newCl, vt);
            }
            else if(tmp < 0){
-               Vertex* vt = createVertex(0, -tmp);
+               vt = createVertex(0, -tmp);
                addVertexInClause(sat, newCl, vt);
            }
        }
@@ -120,6 +126,7 @@ void solveGrapheInSAT(graphe_l g, int k){
         printf("Il n'existe pas de solution pour ce problème.\n");
     //remove("tmpSAT.cnf");
     //remove("tmpOUT.txt");
+    deleteSat(sat);
 }
 
 /**
@@ -152,7 +159,7 @@ int getNbVertexInSol(char* out){
 int isSatisfiable(char* out){
     FILE* file = fopen(out, "r");
     char buff[255];
-    
+
     fscanf(file, "%s", buff);
     if(strcmp(buff, "SAT") == 0){
         fclose(file);

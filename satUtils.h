@@ -37,7 +37,13 @@ void displayVertex(Vertex *v, int isFirst);
 void displaySat(Sat* s);
 
 void satToFile(Sat* s, char* path);
- 
+
 void execSat(char* path);
 
 void miniSolve(char* cnf, char* out);
+
+void deleteVertex(Vertex *v);   //supprime un vertex
+
+void deleteClause(Clause *c);   //supprime une clause
+
+void deleteSat(Sat *s);         //supprime sat
