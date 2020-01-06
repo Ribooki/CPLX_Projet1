@@ -4,7 +4,7 @@ EXEC = main
 FILE = files/1-FullIns_3
 SRC = main.c graphUtils.c utils.c verification.c maximal.c maximum.c satUtils.c desertToSAT.c SATToDesert.c
 OBJ = $(SRC:.c=.o)
-SUPPR = *.o tmpOUT.txt tmpSAT.cnf testV
+SUPPR = *.o tmpOUT.txt tmpSAT.cnf testV testM testDesertToSAT
 
 all:$(EXEC)
 
@@ -26,7 +26,10 @@ run:
 
 testV: testVerification.o graphUtils.o utils.o satUtils.o verification.o
 	@$(CC) -o $@ $^ $(LDFLAGS)
-	
+
+testM: testMaximal.o graphUtils.o utils.o satUtils.o verification.o
+	@$(CC) -o $@ $^ $(LDFLAGS)
+
 testDesertToSAT: testDesertToSAT.o desertToSAT.o  graphUtils.o utils.o satUtils.o
 	@$(CC) -o $@ $^ $(LDFLAGS)
 
