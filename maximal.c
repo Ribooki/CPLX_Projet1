@@ -7,7 +7,7 @@
  * ajouté dans l'ensemble du graph desert
  * Retourne l'ensemble de donné généré
  * auteur: Alexandre Tosi
- * verificateur:
+ * verificateur: Thomas Rieffel
  * complexité: O(n^2)
  */
 ens_de_sommets calcul_graphe_maximal(graphe_l g, sommet x)

@@ -24,8 +24,8 @@ int count_vertex(ens_de_sommets e)
  * Avec g un graph et k le nombre de sommets minimum devant composer le désert
  * Parcourt le graph en essayant pour chaque sommet son graph maximal jusqu'à arriver à un desert dont le nombre de sommets > k sinon s'arrete à la fin du parcourt
  * Retourne 1 si il existe, 0 sinon
- * auteur: 
- * verificateur: 
+ * auteur: Alexandre Tosi
+ * verificateur: Romain Allemand
  * complexité: O(n^3)
  */
 int existe_desert_maximum_exacte(graphe_l g, int k)
@@ -50,8 +50,8 @@ int existe_desert_maximum_exacte(graphe_l g, int k)
  * Avec g un graph et k le nombre de sommets minimum devant composer le désert
  * Parcourt le graph en essayant pour 1 sommet sur 2 son graph maximal jusqu'à arriver à un desert dont le nombre de sommets > k sinon s'arrete à la fin du parcourt
  * Retourne 1 si il existe, 0 sinon
- * auteur: 
- * verificateur: 
+ * auteur: Alexandre Tosi
+ * verificateur: Romain Allemand
  * complexité: O(n/2*(n^2))
  */
 int existe_desert_maximum_incomplet(graphe_l g, int k)
