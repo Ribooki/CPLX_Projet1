@@ -28,7 +28,7 @@ int arc(graphe_l g, sommet x, sommet y)
  * spec: 
  * auteur: 
  * verificateur: 
- * complexité: 
+ * complexité: O(n)
  */
 void successeurs(graphe_l g, sommet x, ens_de_sommets *e)
 {
@@ -86,7 +86,7 @@ void removeFirst(ens_de_sommets *e)
  * spec: 
  * auteur: 
  * verificateur: 
- * complexité: 
+ * complexité: O(n)
  */
 int contains(ens_de_sommets *e, sommet y)
 {

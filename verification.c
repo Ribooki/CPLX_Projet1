@@ -4,7 +4,7 @@
  * spec: 
  * auteur: 
  * verificateur: 
- * complexité: 
+ * complexité:
  */
 int isDesert(graphe_l g, ens_de_sommets *e)
 {
