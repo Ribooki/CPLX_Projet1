@@ -1,12 +1,12 @@
 #include "utils.h"
 
 /**
- * spec: 
- * auteur: 
- * verificateur: 
- * complexité: 
+ * spec:
+ * auteur:
+ * verificateur:
+ * complexité:
  */
-graphe_l* readFile(char* fileAbsolutePath)
+graphe_l* readFile(const char* fileAbsolutePath)
 {
     graphe_l * graph = malloc(sizeof(graphe_l));
     int x = 0, y = 0;
